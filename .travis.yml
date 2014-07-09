@@ -2,6 +2,16 @@ script:
   - cp -a src build
   - ls -la build
 
-# after_success:
+after_success:
+  - secret=`openssl rsautl -decrypt -inkey ~/.ssh/id_rsa -in .travis/id_release.secret`
+  - openssl aes-256-cbc -k "$secret" -in .travis/id_release.enc -d -a -out .travis/id_release
+  - git clone --depth 1 git@github.com:chrisirhc/_test-proj-releases.git release
+#   - cp -a build/* release/
+#   - cd release/
+#   - git add .
+#   - git commit -m "$TRAVIS_COMMIT"
+#   - git push
+#   - chmod 600 .travis/id_release
+#   - ssh-add .travis/id_release
 #   - git remote add deploy DEPLOY_REPO_URI_GOES_HERE
 #   - git push deploy
