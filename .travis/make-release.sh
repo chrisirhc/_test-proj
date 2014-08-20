@@ -11,4 +11,6 @@ if [ "$TRAVIS_BRANCH" == "master" ]; then
     git config user.name "Bot"
     git commit -m "$version (automatic)"
     git push origin master
+else
+    echo "Do nothing since it's not a release branch."
 fi
