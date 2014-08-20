@@ -10,7 +10,7 @@ after_success:
   - version=`git rev-parse --short HEAD`
   - cd release/
   - git add .
-  - git commit --author="bot@travis-ci.org" -m "$version (automatic)"
+  - git commit --author="Bot <bot@travis-ci.org>" -m "$version (automatic)"
   - git push origin master
 #   - cp -a build/* release/
 #   - cd release/
