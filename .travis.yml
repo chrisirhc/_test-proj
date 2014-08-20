@@ -8,6 +8,12 @@ after_success:
   - chmod 600 .travis/id_release
   - ssh-add .travis/id_release
   - git clone --depth 1 git@github.com:chrisirhc/_test-proj-releases.git release
+  - mv build/test.js release/
+  - cd release/
+  - version=`git rev-parse --short HEAD`
+  - git add .
+  - git commit -m "$version (automatic)"
+  - git push origin master
 #   - cp -a build/* release/
 #   - cd release/
 #   - git add .
