@@ -3,9 +3,8 @@ script:
   - ls -la build
 
 after_success:
-  - openssl aes-256-cbc -K $encrypted_0e643f7c177c_key -iv $encrypted_0e643f7c177c_iv -in .travis/id_release.enc -out .travis/id_release -d
-  - chmod 600 .travis/id_release
-  - ssh-add .travis/id_release
+  - openssl aes-256-cbc -K $encrypted_0e643f7c177c_key -iv $encrypted_0e643f7c177c_iv -in .travis/id_release.enc -out ~/.ssh/id_rsa -d
+  - chmod 600 ~/.ssh/id_rsa
   - git clone --depth 1 git@github.com:chrisirhc/_test-proj-releases.git release
   - mv build/test.js release/
   - cd release/
