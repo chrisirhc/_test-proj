@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ "$TRAVIS_BRANCH" == "master" ]; then
     openssl aes-256-cbc -K $encrypted_0e643f7c177c_key -iv $encrypted_0e643f7c177c_iv -in .travis/id_release.enc -out ~/.ssh/id_rsa -d
