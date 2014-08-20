@@ -10,7 +10,7 @@ after_success:
   - version=`git rev-parse --short HEAD`
   - cd release/
   - git add .
-  - GIT_AUTHOR_NAME="Bot"
+  - git config user.name "Bot"
   - git commit -m "$version (automatic)"
   - git push origin master
 #   - cp -a build/* release/
